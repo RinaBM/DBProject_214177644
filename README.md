@@ -46,6 +46,8 @@ The system supports the following main actions:
 
 The following screens were created using Google AI Studio as a visual prototype for the SmartRoute system.
 
+link to my website: https://aistudio.google.com/apps/664d5084-b6b3-46bc-a42e-04a17ecb6ce5?showAssistant=true&showPreview=true&fullscreenApplet=true
+
 ### Dashboard
 
 The dashboard displays a general overview of the system, including routes, bookings, and general statistics.
