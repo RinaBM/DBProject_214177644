@@ -53,6 +53,7 @@ CREATE TABLE GUIDEDTOUR
 (
     guided_tour_id INT NOT NULL,
     start_date DATE NOT NULL,
+    registration_deadline DATE NOT NULL,
     max_participants INT NOT NULL,
     price NUMERIC(8,2) NOT NULL,
     status VARCHAR(30) NOT NULL,
@@ -67,6 +68,7 @@ CREATE TABLE GUIDEDTOUR
     FOREIGN KEY (guide_id)
         REFERENCES GUIDE(guide_id),
 
+    CHECK (registration_deadline <= start_date),
     CHECK (max_participants > 0),
     CHECK (price >= 0),
     CHECK (status IN ('Open', 'Closed', 'Cancelled'))
@@ -111,3 +113,5 @@ CREATE TABLE ROUTESITE
 
     UNIQUE (route_id, visit_order)
 );
+
+commit;

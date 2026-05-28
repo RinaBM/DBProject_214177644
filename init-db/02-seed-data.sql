@@ -1,0 +1,167 @@
+
+INSERT INTO USERS (user_id, full_name, email, phone) VALUES
+(1, 'Noa Cohen', 'noa.cohen@gmail.com', '0501111111'),
+(2, 'Daniel Levi', 'daniel.levi@gmail.com', '0502222222'),
+(3, 'Maya Israeli', 'maya.israeli@gmail.com', '0503333333'),
+(4, 'Amit Peretz', 'amit.peretz@gmail.com', '0504444444'),
+(5, 'Shira Katz', 'shira.katz@gmail.com', '0505555555'),
+(6, 'Yarden Mizrahi', 'yarden.mizrahi@gmail.com', '0506666666'),
+(7, 'Eden Bar', 'eden.bar@gmail.com', '0507777777'),
+(8, 'Tamar Avraham', 'tamar.avraham@gmail.com', '0508888888'),
+(9, 'Itay Shalom', 'itay.shalom@gmail.com', '0509999999'),
+(10, 'Lia David', 'lia.david@gmail.com', '0511111111'),
+(11, 'Omer Biton', 'omer.biton@gmail.com', '0512222222'),
+(12, 'Noya Tal', 'noya.tal@gmail.com', '0513333333'),
+(13, 'Yonatan Azulay', 'yonatan.azulay@gmail.com', '0514444444'),
+(14, 'Hila Mor', 'hila.mor@gmail.com', '0515555555'),
+(15, 'Ariel Cohen', 'ariel.cohen@gmail.com', '0516666666'),
+(16, 'Adi Ben Ami', 'adi.benami@gmail.com', '0517777777'),
+(17, 'Roni Gal', 'roni.gal@gmail.com', '0518888888'),
+(18, 'Michal Dayan', 'michal.dayan@gmail.com', '0519999999'),
+(19, 'Eitan Sharabi', 'eitan.sharabi@gmail.com', '0521111110'),
+(20, 'Yael Golan', 'yael.golan@gmail.com', '0522222220');
+
+
+INSERT INTO GUIDE (guide_id, full_name, phone, email, languages) VALUES
+(1, 'Omer Gal', '0521111111', 'omer.gal.guide@gmail.com', 'Hebrew, English'),
+(2, 'Roni Tal', '0522222222', 'roni.tal.guide@gmail.com', 'Hebrew, French'),
+(3, 'Dana Bar', '0523333333', 'dana.bar.guide@gmail.com', 'Hebrew, Spanish'),
+(4, 'Eyal Mor', '0524444444', 'eyal.mor.guide@gmail.com', 'Hebrew, English, Arabic'),
+(5, 'Lior Ben Ami', '0525555555', 'lior.benami.guide@gmail.com', 'Hebrew, Italian'),
+(6, 'Shani Levi', '0526666666', 'shani.levi.guide@gmail.com', 'Hebrew, English'),
+(7, 'Nadav Cohen', '0527777777', 'nadav.cohen.guide@gmail.com', 'Hebrew, German'),
+(8, 'Talia Peretz', '0528888888', 'talia.peretz.guide@gmail.com', 'Hebrew, English'),
+(9, 'Gilad Shahar', '0529999999', 'gilad.shahar.guide@gmail.com', 'Hebrew, Russian'),
+(10, 'Maayan Katz', '0531111111', 'maayan.katz.guide@gmail.com', 'Hebrew, English'),
+(11, 'Alon Mizrahi', '0532222222', 'alon.mizrahi.guide@gmail.com', 'Hebrew, Arabic'),
+(12, 'Hadas Ben David', '0533333333', 'hadas.bendavid.guide@gmail.com', 'Hebrew, French'),
+(13, 'Yair Azulay', '0534444444', 'yair.azulay.guide@gmail.com', 'Hebrew, English'),
+(14, 'Noam Shalev', '0535555555', 'noam.shalev.guide@gmail.com', 'Hebrew, Spanish'),
+(15, 'Inbar Dayan', '0536666666', 'inbar.dayan.guide@gmail.com', 'Hebrew, English'),
+(16, 'Ori Avraham', '0537777777', 'ori.avraham.guide@gmail.com', 'Hebrew, Italian'),
+(17, 'Sivan Golan', '0538888888', 'sivan.golan.guide@gmail.com', 'Hebrew, English'),
+(18, 'Barak Tzur', '0539999999', 'barak.tzur.guide@gmail.com', 'Hebrew, German'),
+(19, 'Ella Biton', '0541111111', 'ella.biton.guide@gmail.com', 'Hebrew, Russian'),
+(20, 'Tal Amir', '0542222222', 'tal.amir.guide@gmail.com', 'Hebrew, English');
+
+
+INSERT INTO ROUTE (route_id, route_name, difficulty_level, estimated_duration, distance, description) VALUES
+(1, 'Jerusalem Old City Route', 'Easy', 4, 3.50, 'A walking route through historical sites in Jerusalem.'),
+(2, 'Galilee Nature Trail', 'Medium', 6, 12.00, 'A nature route through northern Israel.'),
+(3, 'Negev Desert Adventure', 'Hard', 8, 18.50, 'A challenging desert route in the Negev.'),
+(4, 'Tel Aviv Urban Tour', 'Easy', 3, 4.00, 'An urban route through Tel Aviv landmarks.'),
+(5, 'Carmel Mountain Trail', 'Medium', 5, 9.20, 'A scenic route in the Carmel area.'),
+(6, 'Dead Sea View Route', 'Easy', 4, 6.40, 'A route near the Dead Sea with viewpoints.'),
+(7, 'Golan Heights Explorer', 'Medium', 7, 14.30, 'A route through waterfalls and viewpoints in the Golan.'),
+(8, 'Eilat Desert Path', 'Hard', 9, 20.00, 'A desert hiking route near Eilat.'),
+(9, 'Akko Historical Walk', 'Easy', 3, 2.80, 'A walking tour through the old city of Akko.'),
+(10, 'Haifa Coastal Route', 'Medium', 5, 8.70, 'A route combining city views and coastal scenery.'),
+(11, 'Safed Art Route', 'Easy', 4, 3.20, 'A cultural route through galleries and old streets.'),
+(12, 'Hermon Snow Trail', 'Hard', 6, 10.50, 'A cold mountain route near Mount Hermon.'),
+(13, 'Caesarea Ancient Route', 'Easy', 3, 4.60, 'A route through ancient Roman ruins.'),
+(14, 'Ein Gedi Nature Route', 'Medium', 5, 7.80, 'A route through springs and desert nature.'),
+(15, 'Beit Shean History Route', 'Easy', 4, 5.10, 'A historical route in Beit Shean.'),
+(16, 'Judean Hills Route', 'Medium', 6, 11.40, 'A route through villages and hills.'),
+(17, 'Ramon Crater Long Trail', 'Hard', 10, 23.00, 'A long challenging route in Ramon Crater.'),
+(18, 'Yarkon Park Route', 'Easy', 2, 3.00, 'A relaxed urban nature route.'),
+(19, 'Nazareth Culture Route', 'Easy', 4, 3.90, 'A cultural and religious route in Nazareth.'),
+(20, 'Arava Desert Route', 'Hard', 8, 17.60, 'A desert route through the Arava region.');
+
+
+INSERT INTO SITE (site_id, site_name, country, city, category, description) VALUES
+(1, 'Western Wall', 'Israel', 'Jerusalem', 'Historical', 'A holy and historical site in Jerusalem.'),
+(2, 'Church of the Holy Sepulchre', 'Israel', 'Jerusalem', 'Religious', 'A major religious site in the Old City.'),
+(3, 'Sea of Galilee', 'Israel', 'Tiberias', 'Nature', 'A famous lake in northern Israel.'),
+(4, 'Ramon Crater', 'Israel', 'Mitzpe Ramon', 'Nature', 'A unique desert geological formation.'),
+(5, 'Carmel Forest', 'Israel', 'Haifa', 'Nature', 'A forest area with hiking trails.'),
+(6, 'Dead Sea', 'Israel', 'Ein Bokek', 'Nature', 'A salt lake known for its unique landscape.'),
+(7, 'Banias Waterfall', 'Israel', 'Golan Heights', 'Nature', 'A waterfall and nature reserve in the Golan.'),
+(8, 'Timna Park', 'Israel', 'Eilat', 'Nature', 'A desert park with unique rock formations.'),
+(9, 'Akko Old City', 'Israel', 'Akko', 'Historical', 'An ancient city with historical buildings.'),
+(10, 'Bahai Gardens', 'Israel', 'Haifa', 'Landmark', 'Beautiful gardens overlooking Haifa.'),
+(11, 'Safed Artists Quarter', 'Israel', 'Safed', 'Culture', 'A cultural area with galleries and old streets.'),
+(12, 'Mount Hermon', 'Israel', 'Hermon', 'Nature', 'A mountain area in northern Israel.'),
+(13, 'Caesarea National Park', 'Israel', 'Caesarea', 'Historical', 'Ancient Roman ruins near the sea.'),
+(14, 'Ein Gedi Reserve', 'Israel', 'Ein Gedi', 'Nature', 'A desert oasis with springs and wildlife.'),
+(15, 'Beit Shean National Park', 'Israel', 'Beit Shean', 'Historical', 'Ancient ruins from Roman and Byzantine periods.'),
+(16, 'Judean Hills', 'Israel', 'Jerusalem Area', 'Nature', 'A scenic hilly region.'),
+(17, 'Yarkon Park', 'Israel', 'Tel Aviv', 'Urban Nature', 'A large park in Tel Aviv.'),
+(18, 'Nazareth Old Market', 'Israel', 'Nazareth', 'Culture', 'A market area with local culture.'),
+(19, 'Arava Valley', 'Israel', 'Arava', 'Nature', 'A desert valley in southern Israel.'),
+(20, 'Jaffa Port', 'Israel', 'Tel Aviv-Jaffa', 'Historical', 'An old port and tourist area.');
+
+
+INSERT INTO GUIDEDTOUR
+(guided_tour_id, start_date, registration_deadline, max_participants, price, status, route_id, guide_id)
+VALUES
+(1, '2026-06-10', '2026-06-05', 25, 120.00, 'Open', 1, 1),
+(2, '2026-06-15', '2026-06-10', 30, 180.00, 'Open', 2, 2),
+(3, '2026-07-01', '2026-06-25', 20, 250.00, 'Open', 3, 3),
+(4, '2026-07-05', '2026-07-01', 35, 90.00, 'Closed', 4, 4),
+(5, '2026-07-12', '2026-07-08', 28, 150.00, 'Open', 5, 5),
+(6, '2026-07-20', '2026-07-15', 25, 110.00, 'Open', 6, 6),
+(7, '2026-08-01', '2026-07-25', 30, 190.00, 'Open', 7, 7),
+(8, '2026-08-08', '2026-08-01', 18, 300.00, 'Open', 8, 8),
+(9, '2026-08-15', '2026-08-10', 40, 80.00, 'Closed', 9, 9),
+(10, '2026-08-22', '2026-08-18', 32, 140.00, 'Open', 10, 10),
+(11, '2026-09-01', '2026-08-27', 22, 130.00, 'Open', 11, 11),
+(12, '2026-09-05', '2026-08-30', 16, 280.00, 'Cancelled', 12, 12),
+(13, '2026-09-12', '2026-09-07', 34, 100.00, 'Open', 13, 13),
+(14, '2026-09-18', '2026-09-13', 26, 160.00, 'Open', 14, 14),
+(15, '2026-09-25', '2026-09-20', 30, 115.00, 'Closed', 15, 15),
+(16, '2026-10-02', '2026-09-27', 24, 170.00, 'Open', 16, 16),
+(17, '2026-10-10', '2026-10-03', 15, 350.00, 'Open', 17, 17),
+(18, '2026-10-15', '2026-10-12', 45, 60.00, 'Open', 18, 18),
+(19, '2026-10-22', '2026-10-17', 28, 125.00, 'Open', 19, 19),
+(20, '2026-11-01', '2026-10-25', 18, 290.00, 'Cancelled', 20, 20);
+
+
+INSERT INTO BOOKING
+(booking_id, booking_date, no_of_participants, payment_status, user_id, guided_tour_id)
+VALUES
+(1, '2026-05-20', 2, 'Paid', 1, 1),
+(2, '2026-05-21', 1, 'Pending', 2, 1),
+(3, '2026-05-22', 3, 'Paid', 3, 2),
+(4, '2026-05-23', 2, 'Unpaid', 4, 3),
+(5, '2026-05-24', 4, 'Paid', 5, 5),
+(6, '2026-05-25', 1, 'Paid', 6, 6),
+(7, '2026-05-26', 2, 'Pending', 7, 7),
+(8, '2026-05-27', 3, 'Paid', 8, 8),
+(9, '2026-05-28', 1, 'Cancelled', 9, 9),
+(10, '2026-05-29', 2, 'Paid', 10, 10),
+(11, '2026-05-30', 4, 'Paid', 11, 11),
+(12, '2026-06-01', 1, 'Unpaid', 12, 12),
+(13, '2026-06-02', 2, 'Pending', 13, 13),
+(14, '2026-06-03', 3, 'Paid', 14, 14),
+(15, '2026-06-04', 1, 'Paid', 15, 15),
+(16, '2026-06-05', 2, 'Cancelled', 16, 16),
+(17, '2026-06-06', 3, 'Paid', 17, 17),
+(18, '2026-06-07', 2, 'Pending', 18, 18),
+(19, '2026-06-08', 1, 'Paid', 19, 19),
+(20, '2026-06-09', 4, 'Unpaid', 20, 20);
+
+
+INSERT INTO ROUTESITE (route_id, site_id, visit_order) VALUES
+(1, 1, 1),
+(1, 2, 2),
+(2, 3, 1),
+(3, 4, 1),
+(4, 20, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(8, 8, 1),
+(9, 9, 1),
+(10, 10, 1),
+(11, 11, 1),
+(12, 12, 1),
+(13, 13, 1),
+(14, 14, 1),
+(15, 15, 1),
+(16, 16, 1),
+(17, 4, 2),
+(18, 17, 1),
+(19, 18, 1),
+(20, 19, 1);
+
+commit;
