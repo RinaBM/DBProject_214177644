@@ -5,12 +5,6 @@ from datetime import timedelta
 
 fake = Faker()
 
-# =========================
-# Database connection
-# =========================
-# אם את מריצה את הקובץ מהמחשב שלך, לרוב host צריך להיות localhost
-# אם תריצי מתוך קונטיינר Docker, אז host יהיה db
-
 conn = psycopg2.connect(
     host="localhost",
     port="5432",
