@@ -829,9 +829,7 @@ GUIDEDTOUR(status, start_date)
 
 ## גיבוי
 
-- `שלב ב/backup2.backup`
-
----
+[backup2.backup](./שלב%20ב/backup2.backup)
 
 # סיכום שלב ב
 
