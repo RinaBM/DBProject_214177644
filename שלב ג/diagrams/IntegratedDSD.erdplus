@@ -1,0 +1,677 @@
+{
+  "diagramType": 2,
+  "data": {
+    "nodes": [
+      {
+        "id": "ad6f1815-a269-42f4-a4ce-0526d0296eeb",
+        "type": "Table",
+        "position": {
+          "x": 222.4304992899697,
+          "y": 305.4711988505489
+        },
+        "data": {
+          "label": "ROUTE",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "3b2bb147-63b0-4be7-be7f-b90833776046",
+              "name": "route_ID",
+              "type": "INT",
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "6b2fd02a-b1cf-436c-9c1a-571461a59ab0",
+              "name": "route_name",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "2344e984-5523-4db6-81e4-c650bbecb9f1",
+              "name": "difficulty_level",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "0bab99f4-0de4-4a27-9447-d0c91374938c",
+              "name": "estimated_duration",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "3079882e-a118-4076-baeb-45c855dd8019",
+              "name": "distance",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "9fbd0d3f-5576-475e-8153-5fc0a4758e03",
+              "name": "description",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "ca0baf55-743b-421e-b68b-3cc156a312f6",
+              "name": "route_type",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "44d6c8cf-6946-4b72-ae58-824d925bcdec",
+              "name": "area",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "d65a138e-f856-4560-8d7b-6508c227778d",
+              "name": "accessibility",
+              "type": "INT",
+              "isPrimaryKey": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 247
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "ba809f78-16c2-4ec3-95a7-cd6cf1e90160",
+        "type": "Table",
+        "position": {
+          "x": 526.0387893491712,
+          "y": 258.9916879966062
+        },
+        "data": {
+          "label": "SITE",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "a2ebbc14-75ef-42d5-b6c1-6abc270f3829",
+              "name": "site_ID",
+              "type": "INT",
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "b9543402-d91c-4b29-bdff-d37812c89fe6",
+              "name": "site_name",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "a644df0b-0872-4144-b022-81d160491aa9",
+              "name": "country",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "f7ba16b6-379b-4b44-8a49-76812f1ff8fd",
+              "name": "city",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "31f58889-8274-47a9-a501-e4ea324a2a9e",
+              "name": "category",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "1d472825-b145-4617-9661-2d30992d9d8f",
+              "name": "description",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "d77050e4-fe69-479c-97a9-781f0c2d55f7",
+              "name": "address",
+              "type": "INT",
+              "isPrimaryKey": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 198
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "00b15349-8ada-4bc8-a1e6-175f3faabc2e",
+        "type": "Table",
+        "position": {
+          "x": 533.0208122030338,
+          "y": 475.17834367972114
+        },
+        "data": {
+          "label": "GUIDE",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "0c9839fc-9537-4c7d-835f-93ebb0a68475",
+              "name": "guide_ID",
+              "type": "INT",
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "8ae9d14a-5fa0-42f4-9ff7-bc01eb31df09",
+              "name": "full_name",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "3c36911a-ff37-4ab6-affe-995b2b6f9338",
+              "name": "phone",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "ca7fa868-5420-475d-bd45-b927e109633c",
+              "name": "email",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "9cbbc567-7feb-4a94-b89c-3b29c1e9fc25",
+              "name": "languages",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "d3aea491-886d-477f-958c-a137a1ad3914",
+              "name": "school",
+              "type": "INT",
+              "isPrimaryKey": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 173
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "029c755b-ee70-4e2f-b299-fe14b5703962",
+        "type": "Table",
+        "position": {
+          "x": 228.96594138262446,
+          "y": 568.8292086977609
+        },
+        "data": {
+          "label": "GUIDEDTOUR",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "bc055e75-8346-4b91-993f-766443744a4e",
+              "name": "guided_tour_ID",
+              "type": "INT",
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "3e91c6de-2adb-472c-bb99-8e9dd725caf3",
+              "name": "start_date",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "08436aed-6b9d-4861-b650-fb466f15b3a8",
+              "name": "max_participants",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "140841f4-8da0-4def-b5a9-814855593a86",
+              "name": "price",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "3c386276-3eb0-4e4b-b68e-e77cba3f78d5",
+              "name": "status",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "2ec4ffc8-80d4-4dd5-b431-15febbb7b653",
+              "name": "registration_deadline",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "33f56048-2f54-4058-919d-168ccad93fb2",
+              "name": "end_time",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "7009cfaa-d6b1-4a14-a333-a9fe1bd6ad98",
+              "name": "start_time",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "6560d1d5-b3fe-4fd7-8f35-d133a9f13ab8",
+              "name": "fk_ROUTE",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "8a1d0ba0-c278-4723-bba4-edc838ac6c23",
+                "sourceTableId": "ad6f1815-a269-42f4-a4ce-0526d0296eeb",
+                "columns": [
+                  {
+                    "id": "fk_3b2bb147-63b0-4be7-be7f-b90833776046",
+                    "name": "route_ID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isOptional": false
+            },
+            {
+              "id": "3c81eba3-2e01-4e81-9f7a-9d3baa0a02b9",
+              "name": "fk_GUIDE",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "775b7264-af88-46cf-b656-bbef6def140e",
+                "sourceTableId": "00b15349-8ada-4bc8-a1e6-175f3faabc2e",
+                "columns": [
+                  {
+                    "id": "fk_0c9839fc-9537-4c7d-835f-93ebb0a68475",
+                    "name": "guide_ID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isOptional": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 273
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "29a5a18f-99a0-43d7-95e1-9cb0e73351ee",
+        "type": "Table",
+        "position": {
+          "x": -73.8220373627465,
+          "y": 488.00831200339377
+        },
+        "data": {
+          "label": "BOOKING",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "06c4f548-9218-4be8-9cae-4aefe22f7fd1",
+              "name": "booking_id",
+              "type": "INT",
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "da164964-68d9-4a55-8665-71fbe7dd3f85",
+              "name": "booking_date",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "bc4fc837-ef0c-4289-b5dc-e8d1f57385e0",
+              "name": "no_of_participants",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "d59081d3-81a9-43fb-adbb-7e29f979e0ca",
+              "name": "payment_status",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "cd92e46d-9ccf-4b7b-980e-86145748fdc6",
+              "name": "total_price",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "a7e8fdcd-aff5-4a34-ae4d-f9dbc92778e3",
+              "name": "fk_USERS",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "f303553a-80db-414d-9630-983fa655da7d",
+                "sourceTableId": "81174336-2623-4092-a5e6-52327523c5e0",
+                "columns": [
+                  {
+                    "id": "fk_6c8233d7-aae1-460e-a976-66f74306e9ca",
+                    "name": "user_ID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isOptional": false
+            },
+            {
+              "id": "0a223114-9d87-4936-8766-92da9bc19d78",
+              "name": "fk_GUIDEDTOUR",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "89cff1ec-19f6-4d3b-b391-aff2a2ff2fbf",
+                "sourceTableId": "029c755b-ee70-4e2f-b299-fe14b5703962",
+                "columns": [
+                  {
+                    "id": "fk_bc055e75-8346-4b91-993f-766443744a4e",
+                    "name": "guided_tour_ID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isOptional": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 199
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "e2731804-f3fb-44db-99f4-a06841feee8f",
+        "type": "Table",
+        "position": {
+          "x": 221.69557671496233,
+          "y": 159.40195643886727
+        },
+        "data": {
+          "label": "ROUTESITE",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "d602d288-870d-4288-a72e-ccd0f64e08f7",
+              "name": "visit_order",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "286de573-d190-4392-9981-e56213ee44ae",
+              "name": "visit_duration",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "bc903db3-4a8c-44cd-b52c-d87b69af31ab",
+              "name": "fk_ROUTE",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "57c6a128-4dd2-4fea-87b3-4a37600a857c",
+                "sourceTableId": "ad6f1815-a269-42f4-a4ce-0526d0296eeb",
+                "columns": [
+                  {
+                    "id": "fk_3b2bb147-63b0-4be7-be7f-b90833776046",
+                    "name": "route_ID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "1d207e3d-9143-4c80-9f57-a22c4e34270b",
+              "name": "fk_SITE",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "1193680b-72b2-4a4f-9ec8-ecb28583a69c",
+                "sourceTableId": "ba809f78-16c2-4ec3-95a7-cd6cf1e90160",
+                "columns": [
+                  {
+                    "id": "fk_a2ebbc14-75ef-42d5-b6c1-6abc270f3829",
+                    "name": "site_ID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 125
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "81174336-2623-4092-a5e6-52327523c5e0",
+        "type": "Table",
+        "position": {
+          "x": -76.53047239575903,
+          "y": 330.420459097884
+        },
+        "data": {
+          "label": "USERS",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "6c8233d7-aae1-460e-a976-66f74306e9ca",
+              "name": "user_ID",
+              "type": "INT",
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "5859a4a3-cf54-4e77-85c4-96fad21775d7",
+              "name": "full_name",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "2188d967-a688-4769-be1c-9e27cba86622",
+              "name": "email",
+              "type": "INT",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "4c4c0bdd-c969-49da-8139-9b2d1d374cc6",
+              "name": "phone",
+              "type": "INT",
+              "isPrimaryKey": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 124
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "ad6f1815-a269-42f4-a4ce-0526d0296eeb->029c755b-ee70-4e2f-b299-fe14b5703962_8a1d0ba0-c278-4723-bba4-edc838ac6c23",
+        "type": "Relational",
+        "source": "ad6f1815-a269-42f4-a4ce-0526d0296eeb",
+        "targetHandle": "foreign-key-handle-8a1d0ba0-c278-4723-bba4-edc838ac6c23",
+        "target": "029c755b-ee70-4e2f-b299-fe14b5703962",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "8a1d0ba0-c278-4723-bba4-edc838ac6c23",
+            "sourceTableId": "ad6f1815-a269-42f4-a4ce-0526d0296eeb",
+            "columns": [
+              {
+                "id": "fk_3b2bb147-63b0-4be7-be7f-b90833776046",
+                "name": "route_ID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "00b15349-8ada-4bc8-a1e6-175f3faabc2e->029c755b-ee70-4e2f-b299-fe14b5703962_775b7264-af88-46cf-b656-bbef6def140e",
+        "type": "Relational",
+        "source": "00b15349-8ada-4bc8-a1e6-175f3faabc2e",
+        "targetHandle": "foreign-key-handle-775b7264-af88-46cf-b656-bbef6def140e",
+        "target": "029c755b-ee70-4e2f-b299-fe14b5703962",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "775b7264-af88-46cf-b656-bbef6def140e",
+            "sourceTableId": "00b15349-8ada-4bc8-a1e6-175f3faabc2e",
+            "columns": [
+              {
+                "id": "fk_0c9839fc-9537-4c7d-835f-93ebb0a68475",
+                "name": "guide_ID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "81174336-2623-4092-a5e6-52327523c5e0->29a5a18f-99a0-43d7-95e1-9cb0e73351ee_f303553a-80db-414d-9630-983fa655da7d",
+        "type": "Relational",
+        "source": "81174336-2623-4092-a5e6-52327523c5e0",
+        "targetHandle": "foreign-key-handle-f303553a-80db-414d-9630-983fa655da7d",
+        "target": "29a5a18f-99a0-43d7-95e1-9cb0e73351ee",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "f303553a-80db-414d-9630-983fa655da7d",
+            "sourceTableId": "81174336-2623-4092-a5e6-52327523c5e0",
+            "columns": [
+              {
+                "id": "fk_6c8233d7-aae1-460e-a976-66f74306e9ca",
+                "name": "user_ID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "029c755b-ee70-4e2f-b299-fe14b5703962->29a5a18f-99a0-43d7-95e1-9cb0e73351ee_89cff1ec-19f6-4d3b-b391-aff2a2ff2fbf",
+        "type": "Relational",
+        "source": "029c755b-ee70-4e2f-b299-fe14b5703962",
+        "targetHandle": "foreign-key-handle-89cff1ec-19f6-4d3b-b391-aff2a2ff2fbf",
+        "target": "29a5a18f-99a0-43d7-95e1-9cb0e73351ee",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "89cff1ec-19f6-4d3b-b391-aff2a2ff2fbf",
+            "sourceTableId": "029c755b-ee70-4e2f-b299-fe14b5703962",
+            "columns": [
+              {
+                "id": "fk_bc055e75-8346-4b91-993f-766443744a4e",
+                "name": "guided_tour_ID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "ad6f1815-a269-42f4-a4ce-0526d0296eeb->e2731804-f3fb-44db-99f4-a06841feee8f_57c6a128-4dd2-4fea-87b3-4a37600a857c",
+        "type": "Relational",
+        "source": "ad6f1815-a269-42f4-a4ce-0526d0296eeb",
+        "targetHandle": "foreign-key-handle-57c6a128-4dd2-4fea-87b3-4a37600a857c",
+        "target": "e2731804-f3fb-44db-99f4-a06841feee8f",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "57c6a128-4dd2-4fea-87b3-4a37600a857c",
+            "sourceTableId": "ad6f1815-a269-42f4-a4ce-0526d0296eeb",
+            "columns": [
+              {
+                "id": "fk_3b2bb147-63b0-4be7-be7f-b90833776046",
+                "name": "route_ID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "ba809f78-16c2-4ec3-95a7-cd6cf1e90160->e2731804-f3fb-44db-99f4-a06841feee8f_1193680b-72b2-4a4f-9ec8-ecb28583a69c",
+        "type": "Relational",
+        "source": "ba809f78-16c2-4ec3-95a7-cd6cf1e90160",
+        "targetHandle": "foreign-key-handle-1193680b-72b2-4a4f-9ec8-ecb28583a69c",
+        "target": "e2731804-f3fb-44db-99f4-a06841feee8f",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "1193680b-72b2-4a4f-9ec8-ecb28583a69c",
+            "sourceTableId": "ba809f78-16c2-4ec3-95a7-cd6cf1e90160",
+            "columns": [
+              {
+                "id": "fk_a2ebbc14-75ef-42d5-b6c1-6abc270f3829",
+                "name": "site_ID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "viewport": {
+      "x": 111.91580261485387,
+      "y": -30.690749680845727,
+      "zoom": 0.5487059517236689
+    }
+  },
+  "name": "IntegratedDSD",
+  "folder": {
+    "name": "Diagrams",
+    "folderType": 1,
+    "depth": 0,
+    "id": 316042
+  },
+  "id": 478354,
+  "updatedAtTimestamp": 1780652769
+}
