@@ -14,7 +14,11 @@
 8. [Data Insertion Methods](#data-insertion-methods)
 9. [Backup](#backup)
 10. [Technologies](#technologies)
-11.
+
+
+
+<a id="phase-3"></a>
+
 12.- [שלב ג - אינטגרציה ומבטים](./שלב%20ג/README.md)
 
 ---
@@ -851,13 +855,17 @@ GUIDEDTOUR(status, start_date)
 
 
 
+````md
+- [שלב ג - אינטגרציה ומבטים](#phase-3)
 
-# שלב ג – אינטגרציה ומבטים
+---
+# שלב ג - אינטגרציה ומבטים
 
 ## הקדמה
 
-בשלב זה ביצענו אינטגרציה בין בסיס הנתונים המקורי שלנו, העוסק בניהול מסלולי טיול, לבין בסיס נתונים של אגף נוסף שקיבלנו מקבוצה אחרת.  
-מטרת האינטגרציה הייתה ליצור בסיס נתונים משולב אחד, תוך שמירה על הטבלאות הקיימות במערכת המקורית והרחבתן בעזרת פקודות `ALTER TABLE`, בהתאם להנחיות של שיטה א'.
+בשלב זה ביצענו אינטגרציה בין בסיס הנתונים המקורי שלנו, העוסק בניהול מסלולי טיול, לבין בסיס נתונים של אגף נוסף שקיבלנו מקבוצה אחרת.
+
+מטרת האינטגרציה הייתה ליצור בסיס נתונים משולב אחד, תוך שמירה על הטבלאות הקיימות במערכת המקורית והרחבתן באמצעות פקודות `ALTER TABLE`, בהתאם להנחיות של שיטה א'.
 
 ---
 
@@ -889,11 +897,11 @@ GUIDEDTOUR(status, start_date)
 
 ### DSD של האגף החדש
 
-![DSD של האגף החדש](./diagrams/DSD.png)
+![DSD של האגף החדש](<./שלב ג/diagrams/DSD.png>)
 
 ### ERD של האגף החדש
 
-![ERD של האגף החדש](./diagrams/ERD.png)
+![ERD של האגף החדש](<./שלב ג/diagrams/ERD.png>)
 
 ---
 
@@ -911,7 +919,8 @@ GUIDEDTOUR(status, start_date)
 | `BOOKING` | `bookings` | איחוד לישות אחת של הזמנות |
 | `ROUTESITE` | `tourstation` | איחוד לטבלת קשר בין מסלול לאתר |
 
-מכיוון ששתי המערכות עוסקות באותו תחום תוכן — ניהול טיולים מודרכים — החלטנו לא ליצור טבלאות כפולות, אלא לאחד ישויות בעלות משמעות זהה.  
+מכיוון ששתי המערכות עוסקות באותו תחום תוכן — ניהול טיולים מודרכים — החלטנו לא ליצור טבלאות כפולות, אלא לאחד ישויות בעלות משמעות זהה.
+
 שמות הטבלאות של המערכת המקורית נשמרו, ונוספו אליהן שדות מהמערכת שהתקבלה.
 
 ---
@@ -930,7 +939,7 @@ GUIDEDTOUR(status, start_date)
 השדות נוספו באמצעות פקודות `ALTER TABLE`, ללא יצירה מחדש של הטבלאות.
 
 קובץ הפקודות המלא:  
-[Integrate.sql](./Integrate.sql)
+[Integrate.sql](<./שלב ג/Integrate.sql>)
 
 ---
 
@@ -938,11 +947,11 @@ GUIDEDTOUR(status, start_date)
 
 ### ERD משולב
 
-![ERD משולב](./diagrams/IntegratedERD.png)
+![ERD משולב](<./שלב ג/diagrams/IntegratedERD.png>)
 
 ### DSD לאחר אינטגרציה
 
-![DSD לאחר אינטגרציה](./diagrams/IntegratedDSD.png)
+![DSD לאחר אינטגרציה](<./שלב ג/diagrams/IntegratedDSD.png>)
 
 ---
 
@@ -958,7 +967,7 @@ GUIDEDTOUR(status, start_date)
 - רמות קושי מספריות הומרו לערכים `Easy`, `Medium`, `Hard`.
 - סטטוס סיור הומר לערך `Open`.
 - סטטוס תשלום הומר לערכים `Paid` או `Pending`.
-- ערכים מספריים מסוימים קיבלו ערכי ברירת מחדל כדי לעמוד באילוצי CHECK.
+- ערכים מספריים מסוימים קיבלו ערכי ברירת מחדל כדי לעמוד באילוצי `CHECK`.
 
 לאחר ההעברה בוצעו בדיקות תקינות:
 
@@ -973,13 +982,14 @@ GUIDEDTOUR(status, start_date)
 בשלב זה יצרנו שני מבטים, אחד עבור כל אגף מקורי.
 
 קובץ המבטים המלא:  
-[Views.sql](./Views.sql)
+[Views.sql](<./שלב ג/Views.sql>)
 
 ---
 
 ### מבט 1 – `original_tours_overview`
 
-מבט זה מייצג את נקודת המבט של האגף המקורי שלנו.  
+מבט זה מייצג את נקודת המבט של האגף המקורי שלנו.
+
 הוא מציג מידע על סיורים מודרכים, מסלולים, מדריכים, מספר נרשמים, מקומות פנויים והכנסות מהזמנות ששולמו.
 
 בדיקת נתונים מהמבט:
@@ -987,4 +997,128 @@ GUIDEDTOUR(status, start_date)
 ```sql
 SELECT *
 FROM original_tours_overview
+LIMIT 10;
+````
+
+---
+
+#### שאילתה 1.1 – סיורים פתוחים עם מקומות פנויים
+
+שאילתה זו מציגה סיורים פתוחים שעדיין יש בהם מקומות פנויים.
+
+```sql
+SELECT
+    guided_tour_id,
+    route_name,
+    guide_name,
+    start_date,
+    max_participants,
+    registered_participants,
+    available_places
+FROM original_tours_overview
+WHERE status = 'Open'
+  AND available_places > 0
+ORDER BY start_date
+LIMIT 10;
+```
+
+---
+
+#### שאילתה 1.2 – הכנסות לפי רמת קושי
+
+שאילתה זו מסכמת את מספר הסיורים ואת סך ההכנסות לפי רמת הקושי של המסלול.
+
+```sql
+SELECT
+    difficulty_level,
+    COUNT(guided_tour_id) AS total_tours,
+    SUM(paid_revenue) AS total_paid_revenue
+FROM original_tours_overview
+GROUP BY difficulty_level
+ORDER BY total_paid_revenue DESC;
+```
+
+---
+
+### מבט 2 – `received_department_view`
+
+מבט זה מייצג את נקודת המבט של האגף שהתקבל.
+
+הוא מציג מידע בסגנון המערכת שהתקבלה: לקוח, טיול, מופע טיול, מדריך, מספר משתתפים, סטטוס תשלום ומחיר כולל.
+
+בדיקת נתונים מהמבט:
+
+```sql
+SELECT *
+FROM received_department_view
+LIMIT 10;
+```
+
+---
+
+#### שאילתה 2.1 – הזמנות ששולמו
+
+שאילתה זו מציגה הזמנות ששולמו, כולל שם הלקוח, שם הטיול, תאריך הטיול, מספר המשתתפים והמחיר הכולל.
+
+```sql
+SELECT
+    booking_id,
+    customer_name,
+    tour_name,
+    tour_date,
+    number_of_participants,
+    total_price
+FROM received_department_view
+WHERE payment_status = 'Paid'
+ORDER BY tour_date DESC
+LIMIT 10;
+```
+
+---
+
+#### שאילתה 2.2 – הכנסות לפי בית ספר של מדריך
+
+שאילתה זו מסכמת את מספר ההזמנות ואת סך ההכנסות לפי בית הספר של המדריך.
+
+```sql
+SELECT
+    guide_school,
+    COUNT(booking_id) AS total_bookings,
+    COALESCE(SUM(total_price), 0) AS total_revenue
+FROM received_department_view
+WHERE guide_school IS NOT NULL
+GROUP BY guide_school
+ORDER BY total_revenue DESC
+LIMIT 10;
+```
+
+---
+
+## 8. קבצים להגשה
+
+בתיקיית שלב ג נמצאים הקבצים הבאים:
+
+| קובץ                                                                     | תיאור                             |
+| ------------------------------------------------------------------------ | --------------------------------- |
+| [`שלב ג/diagrams/DSD.png`](./שלב ג/diagrams/DSD.png)                     | DSD של האגף שהתקבל                |
+| [`שלב ג/diagrams/ERD.png`](./שלב ג/diagrams/ERD.png)                     | ERD של האגף שהתקבל                |
+| [`שלב ג/diagrams/IntegratedERD.png`](./שלב ג/diagrams/IntegratedERD.png) | ERD משולב                         |
+| [`שלב ג/diagrams/IntegratedDSD.png`](./שלב ג/diagrams/IntegratedDSD.png) | DSD לאחר אינטגרציה                |
+| [`שלב ג/Integrate.sql`](./שלב ג/Integrate.sql)                           | פקודות שינוי, התאמה ושילוב נתונים |
+| [`שלב ג/Views.sql`](./שלב ג/Views.sql)                                   | יצירת המבטים והשאליתות עליהם      |
+| `שלב ג/backup3.sql`                                                      | גיבוי מעודכן לאחר שלב ג           |
+
+---
+
+## 9. סיכום
+
+בשלב ג ביצענו תהליך אינטגרציה מלא בין שני בסיסי נתונים בתחום ניהול טיולים מודרכים.
+
+תחילה ביצענו הינדוס לאחור לבסיס הנתונים שהתקבל, יצרנו עבורו DSD ו־ERD, ולאחר מכן בנינו ERD ו־DSD משולבים.
+
+בהמשך שינינו את בסיס הנתונים המקורי באמצעות `ALTER TABLE`, העברנו את נתוני האגף שהתקבל אל הטבלאות המשולבות, בדקנו תקינות קשרים ויצרנו שני מבטים עם שאילתות משמעותיות על כל מבט.
+
+```
+```
+
 LIMIT 10;
