@@ -14,6 +14,7 @@
 8. [Data Insertion Methods](#data-insertion-methods)
 9. [Backup](#backup)
 10. [Technologies](#technologies)
+11. (שלב ב - שאילתות ואילוצים)[שלב ב - שאילתות ואילוצים]
 
 
 
