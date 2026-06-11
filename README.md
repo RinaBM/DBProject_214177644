@@ -15,7 +15,6 @@
 9. [Backup](#backup)
 10. [Technologies](#technologies)
 11. [שלב ב - שאילתות ואילוצים](#phase-2)
-12. 
 
 12.- [שלב ג - אינטגרציה ומבטים](./שלב%20ג/README.md)
 
