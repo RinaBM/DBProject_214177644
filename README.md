@@ -1438,9 +1438,10 @@ Expected trigger exception
 ```
 
 ---
-## גיבוי
-![backup4](שלב%20ד/backup)
 
+## גיבוי
+
+[backup4](./שלב%20ד/backup4)
 
 ---
 
