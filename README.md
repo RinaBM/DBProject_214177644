@@ -1168,7 +1168,7 @@ phaseD/
 
 בצילום המסך ניתן לראות שהטבלאות נוצרו או שכבר היו קיימות, וההרצה הסתיימה בהצלחה.
 
-![00\_AlterTable](screenshots/00_AlterTable_sql__helper_tables_created_or_already_exist.png)
+![00\_AlterTable](שלב%20ד/screenshots/00_AlterTable_sql__helper_tables_created_or_already_exist.png)
 
 ---
 
@@ -1199,7 +1199,7 @@ fn_available_places(p_t_i_id INTEGER)
 
 בצילום המסך ניתן לראות שהפונקציה נוצרה בהצלחה.
 
-![01\_Function\_AvailablePlaces](screenshots/01_Function_AvailablePlaces_sql__CREATE_FUNCTION.png)
+![01\_Function\_AvailablePlaces](שלב%20ד/screenshots/01_Function_AvailablePlaces_sql__CREATE_FUNCTION.png)
 
 ---
 
@@ -1221,7 +1221,7 @@ fn_available_places(p_t_i_id INTEGER)
 
 בצילום המסך ניתן לראות שהפונקציה נוצרה בהצלחה.
 
-![02\_Function\_CustomerUnpaidCursor](screenshots/02_Function_CustomerUnpaidCursor_sql__CREATE_FUNCTION.png)
+![02\_Function\_CustomerUnpaidCursor](שלב%20ד/screenshots/02_Function_CustomerUnpaidCursor_sql__CREATE_FUNCTION.png)
 
 ---
 
@@ -1253,7 +1253,7 @@ pr_create_booking(...)
 
 בצילום המסך ניתן לראות את יצירת התוכנית בבסיס הנתונים.
 
-![03\_Procedure\_CreateBooking](screenshots/03_Procedure_CreateBooking_sql__OPEN_FILE_but_retake_needed_output_says_CREATE_FUNCTION.png)
+![03\_Procedure\_CreateBooking](שלב%20ד/screenshots/03_Procedure_CreateBooking_sql__OPEN_FILE_but_retake_needed_output_says_CREATE_FUNCTION.png)
 
 ---
 
@@ -1284,7 +1284,7 @@ pr_pay_customer_bookings(p_c_id INTEGER)
 
 בצילום המסך ניתן לראות שהפרוצדורה נוצרה בהצלחה.
 
-![04\_Procedure\_PayCustomerBookings](screenshots/04_Procedure_PayCustomerBookings_sql__CREATE_PROCEDURE.png)
+![04\_Procedure\_PayCustomerBookings](שלב%20ד/screenshots/04_Procedure_PayCustomerBookings_sql__CREATE_PROCEDURE.png)
 
 ---
 
@@ -1311,7 +1311,7 @@ pr_pay_customer_bookings(p_c_id INTEGER)
 
 בצילום המסך ניתן לראות את יצירת התוכנית בבסיס הנתונים.
 
-![05\_Trigger\_LogTourPriceUpdate](screenshots/05_Trigger_LogTourPriceUpdate_sql__OPEN_FILE_but_retake_needed_output_says_CREATE_PROCEDURE.png)
+![05\_Trigger\_LogTourPriceUpdate](שלב%20ד/screenshots/05_Trigger_LogTourPriceUpdate_sql__OPEN_FILE_but_retake_needed_output_says_CREATE_PROCEDURE.png)
 
 ---
 
@@ -1337,7 +1337,7 @@ pr_pay_customer_bookings(p_c_id INTEGER)
 
 בצילום המסך ניתן לראות שהטריגר נוצר בהצלחה.
 
-![06\_Trigger\_BookingTotalAndCapacity](screenshots/06_Trigger_BookingTotalAndCapacity_sql__CREATE_TRIGGER.png)
+![06\_Trigger\_BookingTotalAndCapacity](שלב%20ד/screenshots/06_Trigger_BookingTotalAndCapacity_sql__CREATE_TRIGGER.png)
 
 ---
 
@@ -1358,7 +1358,7 @@ pr_pay_customer_bookings(p_c_id INTEGER)
 
 בצילום המסך ניתן לראות שהתווספה הזמנה חדשה לטבלת `bookings`.
 
-![07\_MainProgram1\_CreateBooking](screenshots/07_MainProgram1_CreateBooking_sql__proof_booking_created.png)
+![07\_MainProgram1\_CreateBooking](שלב%20ד/screenshots/07_MainProgram1_CreateBooking_sql__proof_booking_created.png)
 
 ---
 
@@ -1378,7 +1378,7 @@ pr_pay_customer_bookings(p_c_id INTEGER)
 
 בצילום המסך ניתן לראות את ההזמנות האחרונות ואת סטטוס התשלום שלהן לאחר הרצת התוכנית.
 
-![08\_MainProgram2\_PayBookings](screenshots/08_MainProgram2_PayBookings_sql__proof_bookings_after_payment.png)
+![08\_MainProgram2\_PayBookings](שלב%20ד/screenshots/08_MainProgram2_PayBookings_sql__proof_bookings_after_payment.png)
 
 ---
 
@@ -1397,7 +1397,7 @@ pr_pay_customer_bookings(p_c_id INTEGER)
 Expected trigger exception
 ```
 
-![09\_Test\_Triggers](screenshots/09_Test_Triggers_sql__expected_trigger_exception.png)
+![09\_Test\_Triggers](שלב%20ד/screenshots/09_Test_Triggers_sql__expected_trigger_exception.png)
 
 ---
 
@@ -1415,7 +1415,7 @@ Expected trigger exception
 
 בצילום המסך ניתן לראות הזמנות אחרונות ואת הערך `total_price`, שמוכיח שהמחיר הכולל חושב ונשמר.
 
-![10\_ProofQueriesForReport](screenshots/10_ProofQueriesForReport_sql__proof_bookings_total_price.png)
+![10\_ProofQueriesForReport](שלב%20ד/screenshots/10_ProofQueriesForReport_sql__proof_bookings_total_price.png)
 
 ---
 
