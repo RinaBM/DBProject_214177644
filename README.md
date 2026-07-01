@@ -1438,6 +1438,11 @@ Expected trigger exception
 ```
 
 ---
+## גיבוי
+![backup4](שלב%20ד/backup)
+
+
+---
 
 ## סיכום שלב ד'
 
