@@ -17,7 +17,7 @@
 11. [שלב ב - שאילתות ואילוצים](#phase-2)
 
 12.- [שלב ג - אינטגרציה ומבטים](./שלב%20ג/README.md)
-
+- [שלב ד' – תכנות PL/pgSQL](#phase-d)
 ---
 
 ## Introduction
@@ -1104,3 +1104,356 @@ LIMIT 10;
 
 ## גיבוי
 [`שלב ג/backup3.backup`](./%D7%A9%D7%9C%D7%91%20%D7%92/backup3.backup)
+## להוסיף בתוכן העניינים הראשי
+
+```md
+- [שלב ד' – תכנות PL/pgSQL](#phase-d)
+```
+
+---
+
+<a id="phase-d"></a>
+
+## שלב ד' – תכנות PL/pgSQL
+
+[⬆ חזרה לתוכן העניינים](#תוכן-עניינים)
+
+בשלב זה הוספנו לבסיס הנתונים תוכניות PL/pgSQL מתקדמות.
+המטרה הייתה להעביר חלק מהלוגיקה העסקית של מערכת ניהול הטיולים אל תוך בסיס הנתונים עצמו.
+
+בשלב זה נכתבו:
+
+* 2 פונקציות
+* 2 פרוצדורות
+* 2 טריגרים, כאשר לפחות אחד מהם מופעל בזמן `UPDATE`
+* 2 תוכניות ראשיות, כאשר כל תוכנית ראשית מזמנת פונקציה אחת ופרוצדורה אחת
+* קובץ `AlterTable.sql`
+* קובץ בדיקות והוכחות
+
+---
+
+## מבנה הקבצים בשלב ד'
+
+```text
+phaseD/
+│
+├── 00_AlterTable.sql
+├── 01_Function_AvailablePlaces.sql
+├── 02_Function_CustomerUnpaidCursor.sql
+├── 03_Procedure_CreateBooking.sql
+├── 04_Procedure_PayCustomerBookings.sql
+├── 05_Trigger_LogTourPriceUpdate.sql
+├── 06_Trigger_BookingTotalAndCapacity.sql
+├── 07_MainProgram1_CreateBooking.sql
+├── 08_MainProgram2_PayBookings.sql
+├── 09_Test_Triggers.sql
+├── 10_ProofQueriesForReport.sql
+├── README_PhaseD.md
+├── backup4.backup
+└── screenshots/
+```
+
+---
+
+## 00_AlterTable.sql
+
+קובץ זה מוסיף לבסיס הנתונים טבלאות עזר הדרושות לשלב ד'.
+
+הטבלאות שנוספו הן:
+
+* `tour_price_history` – טבלה לשמירת היסטוריית שינויי מחירים של טיולים.
+* `payment_log` – טבלה לשמירת תיעוד של תשלומים שבוצעו עבור הזמנות.
+
+טבלאות אלו מאפשרות להראות שהפרוצדורות והטריגרים לא רק מחשבים מידע, אלא גם מבצעים שינויים אמיתיים בבסיס הנתונים.
+
+בצילום המסך ניתן לראות שהטבלאות נוצרו או שכבר היו קיימות, וההרצה הסתיימה בהצלחה.
+
+![00\_AlterTable](screenshots/00_AlterTable_sql__helper_tables_created_or_already_exist.png)
+
+---
+
+## 01_Function_AvailablePlaces.sql
+
+קובץ זה יוצר את הפונקציה:
+
+```sql
+fn_available_places(p_t_i_id INTEGER)
+```
+
+הפונקציה מקבלת מזהה של מופע טיול (`t_i_id`) ומחזירה את מספר המקומות הפנויים שנותרו באותו מופע.
+
+הפונקציה מחשבת:
+
+1. מהו מספר המשתתפים המקסימלי המותר בטיול.
+2. כמה משתתפים כבר רשומים להזמנות קיימות.
+3. כמה מקומות פנויים נשארו.
+
+הפונקציה כוללת שימוש ב:
+
+* משתנים
+* `SELECT INTO`
+* תנאי `IF`
+* חישוב ערך מוחזר
+* `RETURN`
+* טיפול בחריגות `EXCEPTION`
+
+בצילום המסך ניתן לראות שהפונקציה נוצרה בהצלחה.
+
+![01\_Function\_AvailablePlaces](screenshots/01_Function_AvailablePlaces_sql__CREATE_FUNCTION.png)
+
+---
+
+## 02_Function_CustomerUnpaidCursor.sql
+
+קובץ זה יוצר פונקציה המחזירה `Ref Cursor`.
+
+הפונקציה מקבלת מזהה לקוח ומחזירה Cursor המכיל את כל ההזמנות של אותו לקוח שעדיין לא שולמו.
+
+מטרת הפונקציה היא לאפשר שליפה מסודרת של הזמנות לא משולמות עבור לקוח מסוים, כדי שניתן יהיה בהמשך לטפל בהן בפרוצדורה.
+
+הפונקציה כוללת שימוש ב:
+
+* `REFCURSOR`
+* בדיקת קיום לקוח
+* תנאי `IF`
+* פתיחת Cursor באמצעות `OPEN`
+* טיפול בחריגות
+
+בצילום המסך ניתן לראות שהפונקציה נוצרה בהצלחה.
+
+![02\_Function\_CustomerUnpaidCursor](screenshots/02_Function_CustomerUnpaidCursor_sql__CREATE_FUNCTION.png)
+
+---
+
+## 03_Procedure_CreateBooking.sql
+
+קובץ זה יוצר את הפרוצדורה:
+
+```sql
+pr_create_booking(...)
+```
+
+הפרוצדורה אחראית על יצירת הזמנה חדשה עבור לקוח למופע טיול מסוים.
+
+לפני הכנסת ההזמנה לטבלת `bookings`, הפרוצדורה בודקת האם יש מספיק מקומות פנויים בטיול.
+הבדיקה נעשית באמצעות קריאה לפונקציה `fn_available_places`.
+
+אם יש מספיק מקומות פנויים — נוצרת הזמנה חדשה.
+אם אין מספיק מקומות — נזרקת חריגה וההזמנה אינה נשמרת.
+
+הפרוצדורה כוללת שימוש ב:
+
+* קריאה לפונקציה
+* משתנים
+* תנאי `IF`
+* פעולת `INSERT`
+* יצירת מזהה חדש להזמנה
+* `RAISE NOTICE`
+* טיפול בחריגות
+
+בצילום המסך ניתן לראות את יצירת התוכנית בבסיס הנתונים.
+
+![03\_Procedure\_CreateBooking](screenshots/03_Procedure_CreateBooking_sql__OPEN_FILE_but_retake_needed_output_says_CREATE_FUNCTION.png)
+
+---
+
+## 04_Procedure_PayCustomerBookings.sql
+
+קובץ זה יוצר את הפרוצדורה:
+
+```sql
+pr_pay_customer_bookings(p_c_id INTEGER)
+```
+
+הפרוצדורה מטפלת בתשלום עבור כל ההזמנות הלא משולמות של לקוח מסוים.
+
+היא עוברת על ההזמנות הלא משולמות של הלקוח, מעדכנת אותן לסטטוס שולם, ומכניסה רשומה מתאימה לטבלת `payment_log`.
+
+הפרוצדורה כוללת שימוש ב:
+
+* Cursor מפורש
+* `OPEN`
+* `FETCH`
+* `LOOP`
+* `EXIT`
+* `CLOSE`
+* משתנה מסוג `RECORD`
+* פעולת `UPDATE`
+* פעולת `INSERT`
+* טיפול בחריגות
+
+בצילום המסך ניתן לראות שהפרוצדורה נוצרה בהצלחה.
+
+![04\_Procedure\_PayCustomerBookings](screenshots/04_Procedure_PayCustomerBookings_sql__CREATE_PROCEDURE.png)
+
+---
+
+## 05_Trigger_LogTourPriceUpdate.sql
+
+קובץ זה יוצר טריגר המופעל לאחר עדכון מחיר בטבלת `tour`.
+
+כאשר מחיר של טיול משתנה, הטריגר שומר בטבלת `tour_price_history` את הנתונים הבאים:
+
+* שם הטיול
+* המחיר הישן
+* המחיר החדש
+* תאריך ושעת השינוי
+
+טריגר זה מדגים שימוש בטריגר בזמן `UPDATE`, בהתאם לדרישת שלב ד'.
+
+הטריגר כולל שימוש ב:
+
+* `OLD`
+* `NEW`
+* פעולת `INSERT`
+* בדיקה האם המחיר באמת השתנה
+* החזרת `NEW`
+
+בצילום המסך ניתן לראות את יצירת התוכנית בבסיס הנתונים.
+
+![05\_Trigger\_LogTourPriceUpdate](screenshots/05_Trigger_LogTourPriceUpdate_sql__OPEN_FILE_but_retake_needed_output_says_CREATE_PROCEDURE.png)
+
+---
+
+## 06_Trigger_BookingTotalAndCapacity.sql
+
+קובץ זה יוצר טריגר המופעל לפני הוספה או עדכון של הזמנה בטבלת `bookings`.
+
+הטריגר מבצע שתי פעולות מרכזיות:
+
+1. מחשב אוטומטית את `total_price` לפי מספר המשתתפים ומחיר הטיול.
+2. בודק שאין חריגה ממספר המשתתפים המקסימלי בטיול.
+
+אם מנסים להכניס הזמנה עם יותר משתתפים מהמותר, הטריגר זורק חריגה ומונע את הכנסת ההזמנה.
+
+הטריגר כולל שימוש ב:
+
+* `BEFORE INSERT OR UPDATE`
+* `NEW`
+* משתנים
+* תנאי `IF`
+* חישוב מחיר כולל
+* `RAISE EXCEPTION`
+
+בצילום המסך ניתן לראות שהטריגר נוצר בהצלחה.
+
+![06\_Trigger\_BookingTotalAndCapacity](screenshots/06_Trigger_BookingTotalAndCapacity_sql__CREATE_TRIGGER.png)
+
+---
+
+## 07_MainProgram1_CreateBooking.sql
+
+זוהי התוכנית הראשית הראשונה.
+
+התוכנית מבצעת תהליך מלא של יצירת הזמנה חדשה:
+
+1. בחירת מופע טיול שיש בו מקומות פנויים.
+2. בחירת לקוח קיים מהמערכת.
+3. קריאה לפונקציה `fn_available_places` כדי לבדוק כמה מקומות פנויים יש לפני ההזמנה.
+4. קריאה לפרוצדורה `pr_create_booking` ליצירת הזמנה חדשה.
+5. בדיקה חוזרת של מספר המקומות הפנויים לאחר יצירת ההזמנה.
+6. הצגת ההזמנות האחרונות בטבלת `bookings`.
+
+תוכנית זו מוכיחה שילוב בין פונקציה, פרוצדורה ושינוי בפועל בבסיס הנתונים.
+
+בצילום המסך ניתן לראות שהתווספה הזמנה חדשה לטבלת `bookings`.
+
+![07\_MainProgram1\_CreateBooking](screenshots/07_MainProgram1_CreateBooking_sql__proof_booking_created.png)
+
+---
+
+## 08_MainProgram2_PayBookings.sql
+
+זוהי התוכנית הראשית השנייה.
+
+התוכנית מבצעת טיפול בתשלומים של לקוח:
+
+1. בחירת לקוח שיש לו הזמנות שלא שולמו.
+2. קריאה לפונקציה `fn_customer_unpaid_bookings`, שמחזירה Cursor עם ההזמנות הלא משולמות.
+3. קריאה לפרוצדורה `pr_pay_customer_bookings`, שמעדכנת את ההזמנות לסטטוס שולם.
+4. הצגת רשומות מטבלת `payment_log`.
+5. הצגת ההזמנות האחרונות מטבלת `bookings`.
+
+תוכנית זו מוכיחה שימוש בפונקציה שמחזירה Cursor, בפרוצדורה עם Cursor מפורש, ובפעולת עדכון אמיתית בבסיס הנתונים.
+
+בצילום המסך ניתן לראות את ההזמנות האחרונות ואת סטטוס התשלום שלהן לאחר הרצת התוכנית.
+
+![08\_MainProgram2\_PayBookings](screenshots/08_MainProgram2_PayBookings_sql__proof_bookings_after_payment.png)
+
+---
+
+## 09_Test_Triggers.sql
+
+קובץ זה משמש לבדיקת הטריגרים.
+
+הקובץ כולל בדיקה שבה מנסים להכניס הזמנה עם מספר משתתפים גבוה מהמותר.
+הטריגר מזהה שאין מספיק מקומות פנויים, מונע את הכנסת ההזמנה, ומציג הודעת חריגה מתאימה.
+
+בדיקה זו מוכיחה שהטריגר לא רק נוצר, אלא גם פועל בפועל בזמן הכנסת נתונים לא תקינים.
+
+בצילום המסך ניתן לראות את הודעת החריגה שהתקבלה מהטריגר:
+
+```text
+Expected trigger exception
+```
+
+![09\_Test\_Triggers](screenshots/09_Test_Triggers_sql__expected_trigger_exception.png)
+
+---
+
+## 10_ProofQueriesForReport.sql
+
+קובץ זה כולל שאילתות עזר להצגת הוכחות בדוח.
+
+השאילתות מציגות:
+
+* הזמנות אחרונות
+* מחירים כוללים שחושבו אוטומטית
+* נתונים מטבלת `payment_log`
+* נתונים מטבלת `tour_price_history`
+* תוצאות שמראות שהתוכניות אכן השפיעו על בסיס הנתונים
+
+בצילום המסך ניתן לראות הזמנות אחרונות ואת הערך `total_price`, שמוכיח שהמחיר הכולל חושב ונשמר.
+
+![10\_ProofQueriesForReport](screenshots/10_ProofQueriesForReport_sql__proof_bookings_total_price.png)
+
+---
+
+## סדר הרצה מומלץ
+
+יש להריץ את הקבצים לפי הסדר הבא:
+
+```text
+00_AlterTable.sql
+01_Function_AvailablePlaces.sql
+02_Function_CustomerUnpaidCursor.sql
+03_Procedure_CreateBooking.sql
+04_Procedure_PayCustomerBookings.sql
+05_Trigger_LogTourPriceUpdate.sql
+06_Trigger_BookingTotalAndCapacity.sql
+07_MainProgram1_CreateBooking.sql
+08_MainProgram2_PayBookings.sql
+09_Test_Triggers.sql
+10_ProofQueriesForReport.sql
+```
+
+---
+
+## סיכום שלב ד'
+
+בשלב זה בסיס הנתונים הורחב באמצעות תוכניות PL/pgSQL.
+התוכניות מאפשרות לבצע בדיקות, חישובים ועדכונים ישירות בתוך בסיס הנתונים.
+
+בפרט, השלב כולל:
+
+* חישוב מקומות פנויים בטיול
+* שליפת הזמנות לא משולמות באמצעות Cursor
+* יצירת הזמנה חדשה לאחר בדיקת קיבולת
+* עדכון הזמנות לסטטוס שולם
+* תיעוד תשלומים
+* שמירת היסטוריית שינויי מחירים
+* בדיקת חריגות בעת הכנסת הזמנה עם יותר מדי משתתפים
+
+צילומי המסך בתיקיית `screenshots` מוכיחים שהתוכניות רצות בהצלחה ומבצעות את הפעולות הנדרשות.
+
+
