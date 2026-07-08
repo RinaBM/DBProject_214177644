@@ -1,0 +1,80 @@
+SmartRoute - Phase E run instructions
+====================================
+
+1. Open the project folder:
+   cd "שלב ה"
+
+2. Install dependencies:
+   npm install
+
+3. Create your local environment file:
+   PowerShell:
+   Copy-Item .env.example .env
+
+   CMD:
+   copy .env.example .env
+
+4. Open .env and update the database password and database name:
+   DB_NAME=tripdb
+   DB_USER=postgres
+   DB_PASSWORD=your_password
+
+5. Make sure PostgreSQL is running and that the Phase C/D database is loaded.
+   If you use Docker from the project root, run:
+   docker compose up -d
+
+6. Run the app:
+   npm run dev
+
+7. Open the system:
+   http://localhost:3000
+
+8. Check database connection:
+   http://localhost:3000/api/health
+
+9. Check detected tables and columns:
+   http://localhost:3000/api/schema/status
+
+Notes:
+- The interface supports CRUD screens for the main SmartRoute tables.
+- Foreign keys are selected with dropdowns and displayed as names instead of raw IDs.
+- The Advanced screen runs two Phase B queries and these Phase D routines:
+  fn_available_places
+  fn_customer_unpaid_bookings
+  pr_create_booking
+  pr_pay_customer_bookings
+- The Logs screen shows payment_log and tour_price_history so you can see effects of procedures/triggers.
+
+
+========================================
+OPTION B - RUN THE APPLICATION AS A DOCKER SERVER
+========================================
+Use this option if the lecturer wants the graphical interface to open from Docker.
+Your PostgreSQL and pgAdmin containers can stay exactly as they are. This adds a third container: smartroute_app.
+
+1. Make sure PostgreSQL_DB and pgadminApp are running in Docker Desktop.
+
+2. In the Phase E folder, create .env from the Docker example:
+
+   Copy-Item .env.docker.example .env
+
+3. Open .env and update:
+
+   DB_NAME=tripdb
+   DB_USER=postgres
+   DB_PASSWORD=your_real_password
+
+4. Build and run the application container:
+
+   docker compose up --build
+
+5. Open the system in the browser:
+
+   http://localhost:3000
+
+6. Check the database connection:
+
+   http://localhost:3000/api/health
+
+If the page opens but shows a database warning, the app container is running but the .env database details are wrong.
+If the page does not open at all, check that the smartroute_app container is running and that port 3000 is not already used.

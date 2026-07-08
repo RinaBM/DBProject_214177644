@@ -1,0 +1,15 @@
+﻿services:
+  smartroute-app:
+    build: .
+    container_name: smartroute_app
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      # Because PostgreSQL already runs in another Docker container and exposes 5432:5432,
+      # this lets the app container reach it through the Windows/Docker host.
+      DB_HOST: host.docker.internal
+      DB_PORT: 5432
+      PORT: 3000
+    restart: unless-stopped
