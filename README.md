@@ -1641,6 +1641,6 @@ http://localhost:3000
 
 קובץ הגיבוי של בסיס הנתונים לשלב ה׳ נמצא כאן:
 
-[backup5.backup](./%D7%A9%D7%9C%D7%91%20%D7%94/backup/backup5.backup)
+[backup5.backup](./שלב%20ה/backup5.backup)
 
 
