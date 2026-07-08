@@ -4,22 +4,13 @@
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [System Purpose](#system-purpose)
-3. [Application Screens](#application-screens)
-4. [ERD Diagram](#erd-diagram)
-5. [DSD Diagram](#dsd-diagram)
-6. [Database Design – 3NF](#database-design--3nf)
-7. [SQL Scripts](#sql-scripts)
-8. [Data Insertion Methods](#data-insertion-methods)
-9. [Backup](#backup)
-10. [Technologies](#technologies)
-11. [שלב ב - שאילתות ואילוצים](#phase-2)
-
-12.- [שלב ג - אינטגרציה ומבטים](./שלב%20ג/README.md)
+- [שלב א הקדמה](#introduction)
+- [שלב ב - שאילתות ואילוצים](#phase-2)
+- [שלב ג - אינטגרציה ומבטים](./שלב%20ג/README.md)
 - [שלב ד' – תכנות PL/pgSQL](#phase-d)
+- [שלב ה׳ - ממשק גרפי לעבודה מול בסיס הנתונים](#שלב-ה---ממשק-גרפי-לעבודה-מול-בסיס-הנתונים)
 ---
-
+## שלב א הקדמה
 ## Introduction
 
 SmartRoute is a database system designed for managing guided travel routes and organized tours.
@@ -1462,4 +1453,161 @@ Expected trigger exception
 
 צילומי המסך בתיקיית `screenshots` מוכיחים שהתוכניות רצות בהצלחה ומבצעות את הפעולות הנדרשות.
 
+
+---
+## שלב ה׳ - ממשק גרפי לעבודה מול בסיס הנתונים
+
+בשלב זה נבנה ממשק גרפי למערכת **SmartRoute** לניהול טיולים מודרכים.  
+הממשק מתחבר ל־PostgreSQL ומאפשר עבודה נוחה מול בסיס הנתונים דרך מסכים גרפיים.
+
+### טכנולוגיות
+
+- React + TypeScript
+- Node.js + Express
+- PostgreSQL
+- Docker
+- PL/pgSQL
+
+### יכולות מרכזיות
+
+- מסך בית עם Dashboard וקישורים לכל מסכי המערכת.
+- ביצוע פעולות CRUD לטבלאות המרכזיות:
+  - Routes
+  - Sites
+  - Guides
+  - Tours
+  - Travelers
+  - Bookings
+  - Route Sites
+- הוספה, שליפה, עדכון ומחיקה של רשומות.
+- עדכון רשומה דרך כפתור עריכה, כאשר הנתונים נטענים לטופס.
+- הצגת שמות וערכים ידידותיים במקום מזהים מספריים בלבד.
+- שימוש ב־Show More להצגת פרטים נוספים בלי להעמיס על הטבלה.
+- מסך Advanced Actions להפעלת שאילתות משלב ב׳ ופונקציות/פרוצדורות משלב ד׳.
+- הודעות הצלחה ושגיאה ברורות למשתמש.
+- שמירה על אילוצי בסיס הנתונים, לדוגמה מניעת מחיקה של רשומה שמקושרת לרשומות אחרות.
+
+### הוראות הפעלה
+
+יש לוודא שקונטיינר PostgreSQL פעיל ושקובץ `.env` כולל את פרטי החיבור למסד הנתונים.
+
+הרצת המערכת:
+
+```bash
+cd "שלב ה"
+docker compose -p smartroute up --build
+```
+
+פתיחת המערכת בדפדפן:
+
+```bash
+http://localhost:3000
+```
+
+### קובץ גיבוי
+
+קובץ הגיבוי של בסיס הנתונים לשלב ה׳:
+
+[backup5.backup](./%D7%A9%D7%9C%D7%91%20%D7%94/backup/backup5.backup)
+
+---
+
+## צילומי מסך - שלב ה׳
+
+### 1. Dashboard ראשי
+
+מסך הבית מציג נתוני סיכום של המערכת: הכנסות, מסלולים, טיולים והזמנות.
+
+![Dashboard](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/01_dashboard_top.png)
+
+### 2. קישורים למסכי המערכת
+
+במסך הבית קיימות קוביות ניווט לכל מסכי המערכת.
+
+![Navigation Cards](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/02_dashboard_navigation_cards.png)
+
+### 3. הוספת מסלול חדש
+
+טופס הוספת מסלול חדש. המשתמש לא מזין ID, המערכת מטפלת בכך אוטומטית.
+
+![Create Route Form](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/03_routes_create_form.png)
+
+### 4. הצלחה לאחר הוספה
+
+לאחר יצירת רשומה חדשה מוצגת הודעת הצלחה.
+
+![Create Route Success](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/04_routes_create_success.png)
+
+### 5. עדכון מסלול
+
+בעת עדכון, נתוני הרשומה נטענים לטופס וניתן לשנות אותם.
+
+![Update Route Form](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/05_routes_update_form.png)
+
+### 6. חיפוש ועדכון
+
+המערכת כוללת חיפוש לפי ערכים גלויים בטבלה והודעת הצלחה לאחר עדכון.
+
+![Search And Update](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/06_routes_update_success_search.png)
+
+### 7. אישור מחיקה
+
+לפני מחיקה מוצגת הודעת אישור כדי למנוע מחיקה בטעות.
+
+![Delete Confirmation](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/07_routes_delete_confirm.png)
+
+### 8. מחיקה מוצלחת
+
+לאחר מחיקה מוצגת הודעת הצלחה.
+
+![Delete Success](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/08_routes_delete_success.png)
+
+### 9. תוצאות חיפוש
+
+החיפוש מסנן את הרשומות לפי הערכים שמופיעים למשתמש.
+
+![Search Results](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/09_routes_search_results.png)
+
+### 10. עדכון טיול עם רשימות נפתחות
+
+במסך הטיולים ניתן לבחור מסלול ומדריך מתוך רשימות נפתחות, במקום להזין מזהים ידנית.
+
+![Tours Dropdowns](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/10_tours_update_dropdowns.png)
+
+### 11. מסך Bookings עם Show More
+
+במסך ההזמנות מוצגים הנתונים המרכזיים, ופרטים נוספים נפתחים באמצעות Show More.
+
+![Bookings Show More](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/11_bookings_show_more.png)
+
+### 12. מסך Route Sites
+
+מסך הקישור בין מסלולים לאתרים מציג שמות ידידותיים במקום מזהים בלבד.
+
+![Route Sites](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/12_route_sites_table.png)
+
+### 13. הרצת שאילתות משלב ב׳
+
+מסך Advanced Actions מאפשר להריץ שאילתות משלב ב׳, כגון היום שבו היו הכי הרבה טיולים ועומס מדריכים.
+
+![Advanced Queries](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/13_advanced_queries.png)
+
+### 14. הרצת פונקציות משלב ד׳
+
+המערכת מאפשרת להפעיל פונקציות PL/pgSQL מתוך הממשק הגרפי.
+
+![Advanced Functions](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/14_advanced_functions.png)
+
+### 15. הרצת פרוצדורות משלב ד׳
+
+המערכת מאפשרת להפעיל פרוצדורות PL/pgSQL מתוך הממשק.
+
+![Advanced Procedures](./%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/15_advanced_procedures.png)
+
+---
+
+## סיכום שלב ה׳
+
+בשלב זה נבנה ממשק גרפי מלא למערכת SmartRoute.  
+הממשק מאפשר עבודה מול בסיס הנתונים בצורה ידידותית, כולל CRUD, חיפוש, עדכון, מחיקה, הצגת שמות במקום מזהים, והרצת שאילתות, פונקציות ופרוצדורות מתוך המסכים.
 
