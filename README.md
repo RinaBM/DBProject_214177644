@@ -2,7 +2,7 @@
 
 # SmartRoute – Guided Travel Routes Management System
 
-## Table of Contents
+## Table of Contents 
 
 - [שלב א הקדמה](#introduction)
 - [שלב ב - שאילתות ואילוצים](#phase-2)
