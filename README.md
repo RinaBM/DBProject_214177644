@@ -4,13 +4,13 @@
 
 ## Table of Contents 
 
-- [שלב א הקדמה](#introduction)
+- [שלב א - הקדמה](#introduction)
 - [שלב ב - שאילתות ואילוצים](#phase-2)
 - [שלב ג - אינטגרציה ומבטים](./שלב%20ג/README.md)
 - [שלב ד' – תכנות PL/pgSQL](#phase-d)
 - [שלב ה׳ - ממשק גרפי לעבודה מול בסיס הנתונים](#שלב-ה---ממשק-גרפי-לעבודה-מול-בסיס-הנתונים)
 ---
-## שלב א הקדמה
+## שלב א - הקדמה
 ## Introduction
 
 SmartRoute is a database system designed for managing guided travel routes and organized tours.
@@ -1487,40 +1487,40 @@ Expected trigger exception
 - הודעות הצלחה ושגיאה ברורות למשתמש.
 - שמירה על אילוצי בסיס הנתונים, לדוגמה מניעת מחיקה של רשומה שמקושרת לרשומות אחרות.
 
+### הוראות הפעלה
 
-### הוראות הפעלה למערכת SmartRoute
-
-#### דרישות מקדימות
-
-לפני הרצת המערכת יש לוודא שמותקנים במחשב:
-
-- Docker Desktop
-- Git
-- דפדפן אינטרנט
-
----
-
-#### 1. הורדת הפרויקט
-
+1. פתיחת Docker Desktop
+יש לפתוח את Docker Desktop ולוודא שהוא פועל לפני הרצת המערכת.
+2. הורדת הפרויקט מה־GitHub
 יש להוריד את הפרויקט מה־GitHub כקובץ ZIP או לשכפל את הריפוזיטורי.
-
-לאחר ההורדה יש לפתוח את תיקיית הפרויקט.
-
----
-
-#### 2. פתיחת Docker Desktop
-
-יש לפתוח את Docker Desktop ולוודא שהוא פועל.
-
----
-
-#### 3. כניסה לתיקיית שלב ה׳
-
-יש לפתוח PowerShell / Terminal בתיקיית הפרויקט ולהיכנס לתיקיית שלב ה׳:
-
-```bash
-cd "שלב ה"
-
+לאחר ההורדה יש לחלץ את הקבצים ולפתוח את תיקיית הפרויקט.
+3. פתיחת טרמינל בתיקיית שלב ה׳
+יש לפתוח PowerShell או Terminal בתוך תיקיית שלב ה׳ של הפרויקט.
+פקודה לדוגמה:
+cd "DBProject_214177644\שלב ה"
+4. הפעלת בסיס הנתונים
+יש לוודא שקונטיינר PostgreSQL קיים ופועל בשם PostgreSQL_DB.
+אם הקונטיינר לא קיים, ניתן ליצור אותו בעזרת הפקודה:
+docker run --name PostgreSQL_DB -e POSTGRES_USER=RinaSH -e POSTGRES_PASSWORD=RinaSH -e POSTGRES_DB=tripdb -p 5432:5432 -d postgres:latest
+5. שחזור קובץ הגיבוי
+קובץ הגיבוי [backup5.backup](./שלב%20ה/backup5.backup)
+יש להריץ:
+docker cp ".\backup5.backup" PostgreSQL_DB:/backup5.backup
+ואחר כך:
+docker exec -it PostgreSQL_DB pg_restore -U RinaSH -d tripdb --clean --if-exists /backup5.backup
+6. הרצת האתר
+מתוך תיקיית שלב ה׳ יש להריץ:
+docker compose -p smartroute up --build
+7. פתיחת האתר בדפדפן
+לאחר שהמערכת עלתה, יש לפתוח בדפדפן:
+http://localhost:3000
+8. עצירת המערכת
+בסיום העבודה ניתן לעצור את הריצה בטרמינל בעזרת:
+Ctrl + C
+ואחר כך ניתן להריץ:
+docker compose down
+הערה:
+אם הקונטיינר PostgreSQL_DB כבר קיים ופועל, אין צורך ליצור אותו מחדש. מספיק לשחזר את הגיבוי ולהריץ את האתר.
 ---
 
 
@@ -1657,5 +1657,4 @@ cd "שלב ה"
 קובץ הגיבוי של בסיס הנתונים לשלב ה׳ נמצא כאן:
 
 [backup5.backup](./שלב%20ה/backup5.backup)
-
 
